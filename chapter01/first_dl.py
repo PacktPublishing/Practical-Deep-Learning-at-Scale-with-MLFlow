@@ -16,8 +16,6 @@ classifier_model = TextClassifier(backbone="prajjwal1/bert-tiny", num_classes=da
 trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
 trainer.finetune(classifier_model, datamodule=datamodule, strategy="freeze")
 
-trainer.save_checkpoint("text_classification_model.pt")
-
 predictions = classifier_model.predict(
     [
         "Best movie I have seen.",
