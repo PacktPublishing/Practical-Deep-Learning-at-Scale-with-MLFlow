@@ -1,8 +1,8 @@
-import torch
 import flash
+import mlflow
+import torch
 from flash.core.data.utils import download_data
 from flash.text import TextClassificationData, TextClassifier
-import mlflow
 
 download_data("https://pl-flash-data.s3.amazonaws.com/imdb.zip", "./data/")
 datamodule = TextClassificationData.from_csv(
