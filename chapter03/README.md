@@ -1,6 +1,6 @@
 # Code for Chapter 3
 
-## Set up a local full-fledged MLflow tracking and registry server with MySQL as backend storage and MinIO as the artifact store
+## Set up a local full-fledged MLflow tracking and registry server with MySQL as backend storage and MinIO as the artifact store (this is based on the )
    1. Checkout the entire repo and switch to folder `chapter03/mlflow_docker_setup`
    2. Run `bash start_mlflow.sh` to start the mlflow server
       
