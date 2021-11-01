@@ -16,22 +16,22 @@ services:
         volumes:
             - minio_data:/data
     
-    mc:
-        image: minio/mc
+    create_mlflow_bucket:
+        image: minio/mc:RELEASE.2019-07-17T22-13-42Z
         depends_on:
             - minio
-        container_name: mc
+        container_name: create_mlflow_bucket
         networks: 
             - storage
         env_file:
             - .env
         entrypoint: >
             /bin/sh -c "
-            while ! nc -z minio 9000; do echo 'Wait minio to startup...' && sleep 0.1; done; sleep 5 &&
-            /usr/bin/mc config host add minio http://minio:9000 ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY};
-            /usr/bin/mc rm -r --force minio/mlflow;
-            /usr/bin/mc mb minio/mlflow;
-            /usr/bin/mc policy download minio/mlflow;
+            until (/usr/bin/mc config host add minio http://minio:9000 ${AWS_ACCESS_KEY_ID} ${AWS_SECRET_ACCESS_KEY}) do echo '...waiting...' && sleep 1; done;
+            /usr/bin/mc mb --ignore-existing minio/${MLFLOW_BUCKET_NAME}
+            /usr/bin/mc policy set public minio/${MLFLOW_BUCKET_NAME};
+            /usr/bin/mc mb --ignore-existing minio/${DATA_REPO_BUCKET_NAME};
+            /usr/bin/mc policy download minio/${DATA_REPO_BUCKET_NAME};
             exit 0;
             "
 
