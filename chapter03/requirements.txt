@@ -1,3 +1,5 @@
 ipykernel==6.4.1
 lightning-flash[all]==0.5.0
 mlflow==1.20.2
+transformers==4.9.2
+datasets==1.2.1
