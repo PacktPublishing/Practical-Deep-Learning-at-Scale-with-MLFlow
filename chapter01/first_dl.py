@@ -19,7 +19,7 @@ trainer.finetune(classifier_model, datamodule=datamodule, strategy="freeze")
 predictions = classifier_model.predict(
     [
         "Best movie I have seen.",
-        "The worst movie in the history of cinema.",
+        "What a movie!",
     ]
 )
 
