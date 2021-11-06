@@ -1,5 +1,7 @@
 # To add a new cell, type '# %%'
 # To add a new markdown cell, type '# %% [markdown]'
+# %%  Notebook for fine-tuning a pretrained language model to do text-based sentiment classification
+
 # %%
 import flash
 import mlflow
@@ -27,7 +29,6 @@ trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
 
 # %%
 EXPERIMENT_NAME = "dl_model_chapter04"
-mlflow.set_tracking_uri('http://localhost')
 mlflow.set_experiment(EXPERIMENT_NAME)
 experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
 print("experiment_id:", experiment.experiment_id)
