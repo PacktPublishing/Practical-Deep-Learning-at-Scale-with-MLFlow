@@ -1,0 +1,62 @@
+name: dl_model_chapter04
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      pipeline_steps:
+        description: Comma-separated list of dl pipeline steps to execute (useful for debugging)
+        type: str
+        default: all
+
+      hydra_configs:
+        description: optional configuration parameters to override default MLproject parameters
+        type: str
+        default: ""
+
+    command: "python main.py main.pipeline_steps=\\'{pipeline_steps}\\' $(echo {hydra_configs})"
+  download_data:
+    parameters:
+      download_url:
+        description: a url to download the data for fine tuning a text sentiment classifier
+        type: str
+        default: https://pl-flash-data.s3.amazonaws.com/imdb.zip
+      local_folder:
+        description: a local folder to store the downloaded data
+        type: str
+        default: ./data
+      pipeline_run_name:
+        description: an mlflow run name
+        type: str
+        default: chapter04
+    command:
+      "python pipeline/download_data.py --download_url {download_url} --local_folder {local_folder} \
+      --pipeline_run_name {pipeline_run_name}"
+
+  fine_tuning_model:
+    parameters:
+      foundation_model:
+        description: a foundation model name in huggingface model repo
+        type: str
+        default: prajjwal1/bert-tiny
+      fine_tuning_strategy:
+        description: a fine_tuning_strategy
+        type: str
+        default: freeze
+    command:
+      "python pipeline/fine_tuning_model.py --foundation_model {foundation_model} \
+      --fine_tuning_strategy {fine_tuning_strategy}"
+
+  register_model:
+    parameters:
+      mlflow_run_id:
+        description: a mlflow run id
+        type: str
+        default: None
+      registered_model_name:
+        description: a registered model name
+        type: str
+        default: dl_finetuned_model
+    command:
+      "python pipeline/register_model.py --mlflow_run_id {mlflow_run_id} \
+      --registered_model_name {registered_model_name}"
