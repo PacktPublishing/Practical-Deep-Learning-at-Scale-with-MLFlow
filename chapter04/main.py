@@ -37,10 +37,12 @@ def run_pipeline(steps):
         if "download_data" in active_steps:
             download_run = mlflow.run(".", "download_data", parameters={})
             download_run = mlflow.tracking.MlflowClient().get_run(download_run.run_id)
+            file_path_uri = download_run.data.params['local_folder']
+            logger.info('downloaded data is located locally in folder: %s', file_path_uri)
             logger.info(download_run)
 
         if "fine_tuning_model" in active_steps:
-            fine_tuning_run = mlflow.run(".", "fine_tuning_model", parameters={})
+            fine_tuning_run = mlflow.run(".", "fine_tuning_model", parameters={"data_path": file_path_uri})
             fine_tuning_run_id = fine_tuning_run.run_id
             print(fine_tuning_run_id)
             fine_tuning_run = mlflow.tracking.MlflowClient().get_run(fine_tuning_run_id)

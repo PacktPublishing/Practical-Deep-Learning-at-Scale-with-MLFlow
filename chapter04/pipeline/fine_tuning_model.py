@@ -1,10 +1,11 @@
+import logging
+
 import click
 import flash
 import mlflow
 import torch
-from flash.text import TextClassificationData, TextClassifier
 import torchmetrics
-import logging
+from flash.text import TextClassificationData, TextClassifier
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
@@ -14,14 +15,15 @@ logger = logging.getLogger()
 @click.option("--foundation_model", default="prajjwal1/bert-tiny",
               help="This is the pretrained backbone foundation model")
 @click.option("--fine_tuning_strategy", default="freeze", help="This is the finetuning strategy.")
-def task(foundation_model, fine_tuning_strategy):
+@click.option("--data_path", default="data", help="This is the path to data.")
+def task(foundation_model, fine_tuning_strategy, data_path):
 
     datamodule = TextClassificationData.from_csv(
         input_fields="review",
         target_fields="sentiment",
-        train_file="./data/imdb/train.csv",
-        val_file="./data/imdb/valid.csv",
-        test_file="./data/imdb/test.csv"
+        train_file=f"{data_path}/imdb/train.csv",
+        val_file=f"{data_path}/imdb/valid.csv",
+        test_file=f"{data_path}/imdb/test.csv"
     )
 
     classifier_model = TextClassifier(backbone=foundation_model,
@@ -38,7 +40,7 @@ def task(foundation_model, fine_tuning_strategy):
 
         run_id = dl_model_tracking_run.info.run_id
         logger.info("run_id: {}; lifecycle_stage: {}".format(run_id,
-                                                            mlflow.get_run(run_id).info.lifecycle_stage))
+                                                             mlflow.get_run(run_id).info.lifecycle_stage))
         mlflow.log_param("fine_tuning_mlflow_run_id", run_id)
         mlflow.set_tag('pipeline_step', __file__)
 
