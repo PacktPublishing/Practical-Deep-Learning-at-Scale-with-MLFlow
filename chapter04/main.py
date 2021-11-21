@@ -44,7 +44,6 @@ def run_pipeline(steps):
         if "fine_tuning_model" in active_steps:
             fine_tuning_run = mlflow.run(".", "fine_tuning_model", parameters={"data_path": file_path_uri})
             fine_tuning_run_id = fine_tuning_run.run_id
-            print(fine_tuning_run_id)
             fine_tuning_run = mlflow.tracking.MlflowClient().get_run(fine_tuning_run_id)
             logger.info(fine_tuning_run)
 
