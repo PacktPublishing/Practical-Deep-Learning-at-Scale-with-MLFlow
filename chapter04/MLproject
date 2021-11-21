@@ -13,8 +13,8 @@ entry_points:
         description: optional configuration parameters to override default MLproject parameters
         type: str
         default: ""
-
     command: "python main.py main.pipeline_steps=\\'{pipeline_steps}\\' $(echo {hydra_configs})"
+
   download_data:
     parameters:
       download_url:
