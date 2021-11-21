@@ -5,15 +5,10 @@ entry_points:
   main:
     parameters:
       pipeline_steps:
-        description: Comma-separated list of dl pipeline steps to execute (useful for debugging)
+        description: Comma-separated list of dl pipeline steps to execute
         type: str
         default: all
-
-      hydra_configs:
-        description: optional configuration parameters to override default MLproject parameters
-        type: str
-        default: ""
-    command: "python main.py main.pipeline_steps=\\'{pipeline_steps}\\' $(echo {hydra_configs})"
+    command: "python main.py --steps pipeline_steps"
 
   download_data:
     parameters:
