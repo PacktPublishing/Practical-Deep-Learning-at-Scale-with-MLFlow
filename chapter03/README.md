@@ -2,9 +2,8 @@
 
 ## Set up conda virtual environment dl_model by running:
    1. conda create -n dl_model python==3.8.10
-   2. pip install -r requirements.txt
-   3. pip uninstall datasets
-   4. pip install datasets==1.2.1
+   2. conda activate dl_model
+   3. pip install -r requirements.txt
 ## Set up a local full-fledged MLflow tracking and registry server with MySQL as backend storage and MinIO as the artifact store
 #### The mlflow docker setup is based on `https://github.com/sachua/mlflow-docker-compose` with updates on latest versions of images of nginix and minio and python version to 3.8. Also fixed bugs for creating buckets using minIO.
    1. Checkout the entire repo and switch to folder `chapter03/mlflow_docker_setup`
