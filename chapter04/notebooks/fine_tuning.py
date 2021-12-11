@@ -15,6 +15,7 @@ import torchmetrics
 os.environ["AWS_ACCESS_KEY_ID"] = "minio"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
 os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
+os.environ["MLFLOW_TRACKING_URI"] = "http://localhost"
 
 # %%
 download_data("https://pl-flash-data.s3.amazonaws.com/imdb.zip", "./data/")
@@ -35,7 +36,6 @@ trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
 
 # %%
 EXPERIMENT_NAME = "dl_model_chapter04"
-mlflow.set_tracking_uri('http://localhost')
 mlflow.set_experiment(EXPERIMENT_NAME)
 experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
 print("experiment_id:", experiment.experiment_id)
