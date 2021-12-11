@@ -4,12 +4,19 @@
 
 # COMMAND ----------
 
+import os
 import flash
 import mlflow
 import torch
 from flash.core.data.utils import download_data
 from flash.text import TextClassificationData, TextClassifier
 import torchmetrics
+
+# COMMAND ----------
+
+os.environ["AWS_ACCESS_KEY_ID"] = "minio"
+os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
+os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
 
 # COMMAND ----------
 
@@ -31,6 +38,7 @@ trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
 # COMMAND ----------
 
 EXPERIMENT_NAME = "dl_model_chapter04"
+mlflow.set_tracking_uri('http://localhost')
 mlflow.set_experiment(EXPERIMENT_NAME)
 experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
 print("experiment_id:", experiment.experiment_id)
