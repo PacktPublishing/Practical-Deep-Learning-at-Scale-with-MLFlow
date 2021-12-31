@@ -11,7 +11,7 @@ logger = logging.getLogger()
 @click.option("--download_url", default="https://pl-flash-data.s3.amazonaws.com/imdb.zip",
               help="This is the remote url where the data will be downloaded")
 @click.option("--local_folder", default="./data", help="This is a local data folder.")
-@click.option("--pipeline_run_name", default="chapter04", help="This is a mlflow run name.")
+@click.option("--pipeline_run_name", default="chapter05", help="This is a mlflow run name.")
 def task(download_url, local_folder, pipeline_run_name):
     with mlflow.start_run(run_name=pipeline_run_name) as mlrun:
         logger.info("Downloading data from  %s", download_url)
