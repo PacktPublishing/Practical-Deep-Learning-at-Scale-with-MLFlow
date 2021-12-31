@@ -5,7 +5,7 @@ entry_points:
   main:
     parameters:
       pipeline_steps: { type: str, default: all }
-    command: "python main.py --steps {pipeline_steps}"
+    command: "python main.py --pipeline_steps {pipeline_steps}"
 
   download_data:
     parameters:
