@@ -35,8 +35,7 @@ def run_pipeline(pipeline_steps):
 
     with mlflow.start_run(run_name='pipeline', experiment_id=experiment.experiment_id, nested=True) as active_run:
         if "download_data" in active_steps:
-            download_run = mlflow.run(".", "download_data", experiment_id=experiment.experiment_id,
-                                      parameters={}, storage_dir="tmp/mlflow-test")
+            download_run = mlflow.run(".", "download_data", experiment_id=experiment.experiment_id, parameters={})
             download_run = mlflow.tracking.MlflowClient().get_run(download_run.run_id)
             file_path_uri = download_run.data.params['local_folder']
             logger.info('downloaded data is located locally in folder: %s', file_path_uri)
