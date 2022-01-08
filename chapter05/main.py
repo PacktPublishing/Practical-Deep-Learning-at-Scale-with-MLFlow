@@ -18,7 +18,8 @@ _steps = [
 @click.option("--pipeline_steps", default="all", type=str)
 def run_pipeline(pipeline_steps):
 
-    # Setup the mlflow experiment and AWS access
+    # Setup the mlflow experiment and AWS access for local execution environment
+    # if you run this project remotely, then comment out the following four lines
     # os.environ["MLFLOW_TRACKING_URI"] = "http://localhost"
     # os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
     # os.environ["AWS_ACCESS_KEY_ID"] = "minio"
@@ -40,7 +41,7 @@ def run_pipeline(pipeline_steps):
             file_path_uri = download_run.data.params['local_folder']
             logger.info('downloaded data is located locally in folder: %s', file_path_uri)
             logger.info(download_run)
-        
+
         if "fine_tuning_model" in active_steps:
             fine_tuning_run = mlflow.run(".", "fine_tuning_model", parameters={"data_path": file_path_uri})
             fine_tuning_run_id = fine_tuning_run.run_id

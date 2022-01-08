@@ -1,0 +1,7 @@
+{
+    "new_cluster": {
+        "spark_version": "9.1.x-gpu-ml-scala2.12",
+        "num_workers": 1,
+        "node_type_id": "g4dn.xlarge"
+    }
+}
