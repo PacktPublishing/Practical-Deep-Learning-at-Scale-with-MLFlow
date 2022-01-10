@@ -1,4 +1,4 @@
-name: dl_model_chapter05
+name: dl-model-chapter05
 conda_env: conda.yaml
 
 entry_points:
