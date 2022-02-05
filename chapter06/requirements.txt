@@ -1,0 +1,12 @@
+ipykernel==6.7.0
+lightning-flash[all]==0.5.2
+mlflow==1.23.1
+transformers==4.12.2
+boto3==1.20.38
+datasets==1.12.1
+pytorch-lightning==1.4.9
+click==8.0.3
+databricks-cli==0.16.2
+ray[tune]==1.9.2
+torchmetrics==0.6.2
+optuna==2.10.0
