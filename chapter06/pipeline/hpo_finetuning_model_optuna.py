@@ -8,6 +8,9 @@ from flash.text import TextClassificationData, TextClassifier
 from ray import tune
 from ray.tune.integration.mlflow import mlflow_mixin
 from ray.tune.integration.pytorch_lightning import TuneReportCallback
+from ray.tune.suggest import ConcurrencyLimiter
+from ray.tune.schedulers import AsyncHyperBandScheduler
+from ray.tune.suggest.optuna import OptunaSearch
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
@@ -55,6 +58,11 @@ def run_hpo_dl_model(num_samples=10,
     mlflow.set_tracking_uri(tracking_uri)
     mlflow.set_experiment(experiment_name)
 
+    # define search algo and scheduler
+    searcher = OptunaSearch()
+    searcher = ConcurrencyLimiter(searcher, max_concurrent=4)
+    scheduler = AsyncHyperBandScheduler()
+
     config = {
         "lr": tune.loguniform(1e-4, 1e-1),
         "batch_size": tune.choice([32, 64, 128]),
@@ -83,6 +91,8 @@ def run_hpo_dl_model(num_samples=10,
         mode="max",
         config=config,
         num_samples=num_samples,
+        search_alg=searcher,
+        scheduler=scheduler,
         name="hpo_tuning_dl_model")
     
     logger.info("Best hyperparameters found were: %s", analysis.best_config)

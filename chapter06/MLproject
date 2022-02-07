@@ -17,24 +17,3 @@ entry_points:
       "python pipeline/download_data.py --download_url {download_url} --local_folder {local_folder} \
       --pipeline_run_name {pipeline_run_name}"
 
-  hpo_finetuning_model:
-    parameters:
-      data_path: { type:str, default: data }
-    command: "python pipeline/hpo_finetuning_model.py --data_path {data_path}"
-
-  fine_tuning_model:
-    parameters:
-      foundation_model: { type: str, default: prajjwal1/bert-tiny }
-      fine_tuning_strategy: { type: str, default: freeze }
-      data_path: { type: str, default: data }
-    command:
-      "python pipeline/fine_tuning_model.py --foundation_model {foundation_model} \
-      --fine_tuning_strategy {fine_tuning_strategy} --data_path {data_path}"
-
-  register_model:
-    parameters:
-      mlflow_run_id: { type: str, default: None }
-      registered_model_name: { type: str, default: dl_finetuned_model }
-    command:
-      "python pipeline/register_model.py --mlflow_run_id {mlflow_run_id} \
-      --registered_model_name {registered_model_name}"
