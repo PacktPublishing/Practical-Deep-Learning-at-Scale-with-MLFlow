@@ -61,15 +61,14 @@ with mlflow.start_run(run_name="chapter07_wrapped_inference_pipeline") as dl_mod
 
 
 # %%
-input = {"text":["what a disappointing movie","Great movie",'Great movie','中文']}
+input = {"text":["what a disappointing movie","Great movie"]}
 input_df = pd.DataFrame(input)
 input_df
 
 
 # %%
-with mlflow.start_run(experiment_id=experiment.experiment_id, run_name="chapter07_wrap_inference_pipeline") as dl_model_prediction_run:
-    logged_model = inference_pipeline_uri
-    loaded_model = mlflow.pyfunc.load_model(logged_model)
+with mlflow.start_run(run_name="chapter07_wrap_inference_pipeline") as dl_model_prediction_run:
+    loaded_model = mlflow.pyfunc.load_model(inference_pipeline_uri)
     results = loaded_model.predict(input_df)
 
 
