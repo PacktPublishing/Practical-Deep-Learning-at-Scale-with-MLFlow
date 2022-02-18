@@ -48,14 +48,21 @@ output = json.dumps([{'name': 'text', 'type': 'string'}])
 # Load model from spec
 signature = ModelSignature.from_dict({'inputs': input, 'outputs': output})
 
+# %%
+from pathlib import Path
+
+cur_dir = os.getcwd()
+chatper_root_dir = Path(os.getcwd()).parent
+CONDA_ENV = f"{chatper_root_dir}/conda.yaml"
 
 # %%
 MODEL_ARTIFACT_PATH = 'inference_pipeline_model'
 with mlflow.start_run(run_name="chapter07_wrapped_inference_pipeline") as dl_model_tracking_run:
+    # replace the value of finetuned_model_uri with your own finetuned model URI
     finetuned_model_uri = 'runs:/ff02cced416f41a79a33ed6cb7451ff3/model'
     inference_pipeline_uri = f'runs:/{dl_model_tracking_run.info.run_id}/{MODEL_ARTIFACT_PATH}'
     mlflow.pyfunc.log_model(artifact_path=MODEL_ARTIFACT_PATH, 
-                            conda_env="../conda.yaml", 
+                            conda_env=CONDA_ENV, 
                             python_model=InferencePipeline(finetuned_model_uri), 
                             signature=signature)     
 
