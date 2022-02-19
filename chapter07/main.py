@@ -10,7 +10,8 @@ logger = logging.getLogger()
 _steps = [
     "download_data",
     "fine_tuning_model",
-    "register_model"
+    "register_model",
+    "inference_pipeline_model"
 ]
 
 
@@ -61,6 +62,15 @@ def run_pipeline(pipeline_steps):
                 logger.info(register_model_run)
             else:
                 logger.info("no model to register since no trained model run id.")
+        
+        if "inference_pipeline_model" in active_steps:
+            if fine_tuning_run_id is not None and fine_tuning_run_id != 'None':
+                inference_pipeline_model_run = mlflow.run(".", "inference_pipeline_model", parameters={"finetuned_model_run_id": fine_tuning_run_id})
+                inference_pipeline_model_run = mlflow.tracking.MlflowClient().get_run(inference_pipeline_model_run.run_id)
+                logger.info(inference_pipeline_model_run)
+            else:
+                logger.info("no finetuned model to create an inference pipeline model.")
+
 
     logger.info('finished mlflow pipeline run with a run_id = %s', active_run.info.run_id)
 

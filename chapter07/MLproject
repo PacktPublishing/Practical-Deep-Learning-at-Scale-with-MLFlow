@@ -33,3 +33,8 @@ entry_points:
     command:
       "python pipeline/register_model.py --mlflow_run_id {mlflow_run_id} \
       --registered_model_name {registered_model_name}"
+
+  inference_pipeline_model:
+    parameters:
+      finetuned_model_run_id: { type: str, default: None }
+    command: "python pipeline/inference_pipeline_model.py --finetuned_model_run_id {finetuned_model_run_id}"
