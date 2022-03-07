@@ -15,8 +15,10 @@
 ### Install Spark 3.2.1 on your local environment
    1. Download the spark-3.2.1-bin-hadoop3.2.tgz:
       https://www.apache.org/dyn/closer.lua/spark/spark-3.2.1/spark-3.2.1-bin-hadoop3.2.tgz
-   2. Unpack the bundle to a folder called spark_server in your local environment, for example: /Users/yongliu/spark_server
-      ```tar -xvf spark-3.2.1-bin-hadoop3.2.tgz```
+   2. Unpack the bundle in a folder called spark_server in your local environment, for example: /Users/yongliu/spark_server
+      ```
+      tar -xvf spark-3.2.1-bin-hadoop3.2.tgz
+      ```
    3. Set up the following environment variables before you run any spark related batch inference job:
       ```
       export SPARK_HOME=/Users/yongliu/spark_server/spark-3.2.1-bin-hadoop3.2
