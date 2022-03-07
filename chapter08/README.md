@@ -9,7 +9,7 @@
       export AWS_SECRET_ACCESS_KEY="minio123"
 
 ## Batch inference at-scale using PySpark UDF function
-### Set up conda virtual environment dl-model-chapter07 by running:
+### Set up conda virtual environment chapter08-batch-inference by running:
        conda env create -f conda-batch-inference.yaml
        conda activate chapter08-batch-inference
 ### Install Spark 3.2.1 on your local environment
