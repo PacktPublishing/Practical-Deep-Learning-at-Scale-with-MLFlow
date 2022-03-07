@@ -1,0 +1,22 @@
+name: chapter08-batch-inference
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.10
+  - pyspark=3.2.1
+  - openjdk=8
+  - pip
+  - pip:
+      - ipykernel==6.4.1
+      - lightning-flash[all]==0.5.0
+      - mlflow==1.23.1
+      - transformers==4.9.2
+      - boto3==1.19.7
+      - pytorch-lightning==1.4.9
+      - datasets==1.9.0
+      - click==8.0.3
+      - databricks-cli==0.16.2
+      - gcld3==3.0.13
+      - cachetools==5.0.0
+      - ray[tune]==1.9.2
+      - optuna==2.10.0
