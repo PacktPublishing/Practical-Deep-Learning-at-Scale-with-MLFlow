@@ -1,4 +1,4 @@
-# Instructions for Chapter 7
+# Instructions for Chapter 8
 
 ## Set up a local full-fledged MLflow tracking and registry server by following the instructions in Chapter 3.
 
