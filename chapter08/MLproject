@@ -1,0 +1,40 @@
+name: dl-model-chapter08
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      pipeline_steps: { type: str, default: all }
+    command: "python main.py --pipeline_steps {pipeline_steps}"
+
+  download_data:
+    parameters:
+      download_url:
+        { type: str, default: https://pl-flash-data.s3.amazonaws.com/imdb.zip }
+      local_folder: { type: str, default: ./data }
+      pipeline_run_name: { type: str, default: chapter08 }
+    command:
+      "python pipeline/download_data.py --download_url {download_url} --local_folder {local_folder} \
+      --pipeline_run_name {pipeline_run_name}"
+
+  fine_tuning_model:
+    parameters:
+      foundation_model: { type: str, default: prajjwal1/bert-tiny }
+      fine_tuning_strategy: { type: str, default: freeze }
+      data_path: { type: str, default: data }
+    command:
+      "python pipeline/fine_tuning_model.py --foundation_model {foundation_model} \
+      --fine_tuning_strategy {fine_tuning_strategy} --data_path {data_path}"
+
+  register_model:
+    parameters:
+      mlflow_run_id: { type: str, default: None }
+      registered_model_name: { type: str, default: dl_finetuned_model }
+    command:
+      "python pipeline/register_model.py --mlflow_run_id {mlflow_run_id} \
+      --registered_model_name {registered_model_name}"
+
+  inference_pipeline_model:
+    parameters:
+      finetuned_model_run_id: { type: str, default: None }
+    command: "python pipeline/inference_pipeline_model.py --finetuned_model_run_id {finetuned_model_run_id}"
