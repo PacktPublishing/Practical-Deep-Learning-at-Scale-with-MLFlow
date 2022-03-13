@@ -32,7 +32,8 @@ def run_pipeline(pipeline_steps):
     # for local execution mode, you can set it up without full path, i.e., dl_model_chapter08
     # for remote execution mode in Databricks, use the full path, i.e., /Shared/dl_model_chapter08
     # EXPERIMENT_NAME = "dl_model_chapter08"
-    EXPERIMENT_NAME = "/Shared/dl_model_chapter08"
+    EXPERIMENT_NAME = "/Shared/deploy/dl_model_chapter08"
+    mlflow.create_experiment(EXPERIMENT_NAME, "s3://annotation-databricks-access-granted/ShortTerm/Users/yongliu/deploy")
     mlflow.set_experiment(EXPERIMENT_NAME)
     experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
     logger.info("pipeline experiment_id: %s", experiment.experiment_id)
