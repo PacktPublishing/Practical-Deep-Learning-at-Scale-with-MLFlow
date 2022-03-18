@@ -1,4 +1,4 @@
-artifact_uri: file:///Users/yongliu/opensource_code/Practical-Deep-Learning-at-Scale-with-MLFlow/chapter08/mlruns/1/dc5f670efa1a4eac95683633ffcfdd79/artifacts
+artifact_uri: file:///opt/mlflow/mlruns/1/dc5f670efa1a4eac95683633ffcfdd79/artifacts
 end_time: 1647565348563
 entry_point_name: ''
 experiment_id: '1'
