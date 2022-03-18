@@ -1,0 +1,15 @@
+artifact_uri: file:///opt/mlflow/mlruns/1/d01fc81e11e842f5b9556ae04136c0d3/artifacts
+end_time: 1647564523360
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: d01fc81e11e842f5b9556ae04136c0d3
+run_uuid: d01fc81e11e842f5b9556ae04136c0d3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1647564061753
+status: 3
+tags: []
+user_id: yongliu

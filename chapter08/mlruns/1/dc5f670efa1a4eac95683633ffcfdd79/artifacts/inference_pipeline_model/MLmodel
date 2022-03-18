@@ -1,0 +1,14 @@
+artifact_path: inference_pipeline_model
+flavors:
+  python_function:
+    cloudpickle_version: 2.0.0
+    env: conda.yaml
+    loader_module: mlflow.pyfunc.model
+    python_model: python_model.pkl
+    python_version: 3.8.10
+model_uuid: d789da56451d4e9d903975b89a5951f9
+run_id: dc5f670efa1a4eac95683633ffcfdd79
+signature:
+  inputs: '[{"name": "text", "type": "string"}]'
+  outputs: '[{"name": "text", "type": "string"}]'
+utc_time_created: '2022-03-18 01:02:28.401588'

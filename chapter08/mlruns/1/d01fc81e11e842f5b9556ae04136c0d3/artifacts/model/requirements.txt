@@ -1,0 +1,14 @@
+mlflow
+aiohttp==3.8.1
+av==9.0.1
+boto3==1.19.7
+cloudpickle==2.0.0
+datasets==1.9.0
+ipython==7.32.0
+lightning-flash==0.5.0
+rouge-score==0.0.4
+scikit-learn==1.0.2
+sentencepiece==0.1.96
+timm==0.4.12
+torch==1.11.0
+transformers==4.9.2

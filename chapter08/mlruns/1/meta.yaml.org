@@ -1,0 +1,4 @@
+artifact_location: file:///Users/yongliu/opensource_code/Practical-Deep-Learning-at-Scale-with-MLFlow/chapter08/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: dl_model_chapter08

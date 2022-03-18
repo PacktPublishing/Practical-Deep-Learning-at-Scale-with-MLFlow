@@ -7,6 +7,7 @@ from mlflow.models import ModelSignature
 import pandas as pd
 import json
 from cachetools import LRUCache
+from mlflow.tracking.registry import UnsupportedModelRegistryStoreURIException
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()
@@ -88,12 +89,22 @@ def task(finetuned_model_run_id, pipeline_run_name):
     with mlflow.start_run(run_name=pipeline_run_name) as mlrun:
         finetuned_model_uri = f'runs:/{finetuned_model_run_id}/model'
         inference_pipeline_uri = f'runs:/{mlrun.info.run_id}/{MODEL_ARTIFACT_PATH}'
-        mlflow.pyfunc.log_model(artifact_path=MODEL_ARTIFACT_PATH, 
-                            conda_env=CONDA_ENV, 
-                            python_model=InferencePipeline(finetuned_model_uri, inference_pipeline_uri), 
-                            signature=signature,
-                            registered_model_name=MODEL_ARTIFACT_PATH
-                            )   
+
+        try:
+            mlflow.pyfunc.log_model(artifact_path=MODEL_ARTIFACT_PATH, 
+                                conda_env=CONDA_ENV, 
+                                python_model=InferencePipeline(finetuned_model_uri, inference_pipeline_uri), 
+                                signature=signature,
+                                registered_model_name=MODEL_ARTIFACT_PATH
+                            )
+        except Exception as e:
+            logger.error(e)
+            mlflow.pyfunc.log_model(artifact_path=MODEL_ARTIFACT_PATH, 
+                                conda_env=CONDA_ENV, 
+                                python_model=InferencePipeline(finetuned_model_uri, inference_pipeline_uri), 
+                                signature=signature
+                            )
+            pass
     
         logger.info("finetuned model uri is: %s", finetuned_model_uri)
         logger.info("inference_pipeline_uri is: %s", inference_pipeline_uri)

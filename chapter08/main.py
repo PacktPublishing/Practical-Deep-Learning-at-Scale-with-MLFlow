@@ -10,7 +10,6 @@ logger = logging.getLogger()
 _steps = [
     "download_data",
     "fine_tuning_model",
-    "register_model",
     "inference_pipeline_model"
 ]
 
@@ -31,12 +30,12 @@ def run_pipeline(pipeline_steps):
     # export MLFLOW_EXPERIMENT_NAME=/Shared/dl_model_chapter08
     # for local execution mode, you can set it up without full path, i.e., dl_model_chapter08
     # for remote execution mode in Databricks, use the full path, i.e., /Shared/dl_model_chapter08
-    # EXPERIMENT_NAME = "dl_model_chapter08"
-    EXPERIMENT_NAME = "/Shared/deploy/dl_model_chapter08"
-    mlflow.create_experiment(EXPERIMENT_NAME, "s3://annotation-databricks-access-granted/ShortTerm/Users/yongliu/deploy")
+    EXPERIMENT_NAME = "dl_model_chapter08"
+    #EXPERIMENT_NAME = "/Shared/dl_inference_model"
+    # mlflow.create_experiment(EXPERIMENT_NAME, "s3://annotation-databricks-access-granted/ShortTerm/Users/yongliu/deploy")
     mlflow.set_experiment(EXPERIMENT_NAME)
-    experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
-    logger.info("pipeline experiment_id: %s", experiment.experiment_id)
+    # experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
+    # logger.info("pipeline experiment_id: %s", experiment.experiment_id)
 
     # Steps to execute
     active_steps = pipeline_steps.split(",") if pipeline_steps != "all" else _steps
@@ -55,14 +54,6 @@ def run_pipeline(pipeline_steps):
             fine_tuning_run_id = fine_tuning_run.run_id
             fine_tuning_run = mlflow.tracking.MlflowClient().get_run(fine_tuning_run_id)
             logger.info(fine_tuning_run)
-
-        if "register_model" in active_steps:
-            if fine_tuning_run_id is not None and fine_tuning_run_id != 'None':
-                register_model_run = mlflow.run(".", "register_model", parameters={"mlflow_run_id": fine_tuning_run_id})
-                register_model_run = mlflow.tracking.MlflowClient().get_run(register_model_run.run_id)
-                logger.info(register_model_run)
-            else:
-                logger.info("no model to register since no trained model run id.")
         
         if "inference_pipeline_model" in active_steps:
             if fine_tuning_run_id is not None and fine_tuning_run_id != 'None':
