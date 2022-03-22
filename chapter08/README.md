@@ -49,19 +49,23 @@ SparkSession available as 'spark'.
 ```
 ## Deploying to AWS Sagemaker: preparation
 To reproduce what we have in the github repo, follow the steps below under the chapter08 folder:
-   1.	Set up the following two environment variables
+   1.	Set up the following two environment variables:
+
       export MLFLOW_TRACKING_URI=
       export HF_DATASETS_CACHE=tmp/opt/mlflow/hf/cache/dl_model_chapter08
 
+   The first environment variable turns off the fully-fledged local MLflow tracking server and uses the local file system as the tracking backend. The second environment variable specifies the Huggingface datasets cache location, which is used by the fine-tuned model. 
 
-      The first environment variable turns off the fully-fledged local MLflow tracking server and use the local file system as the tracking backend. The second environment variable specifies the Huggingface datasets cache location, which is used by the fine-tuned model. 
    2.	Run the fine-tuning step pipeline as follows:
+      
       mlflow run . -e fine_tuning_model --experiment-name='dl_model_chapter08' -P data_path='./data'
 
-      Once the fine tuning model step is done, use the run_id  (here we use an example run_id d01fc81e11e842f5b9556ae04136c0d3) as the parameter to run the inference_pipeline_model step as follows to produce the inference_pipeline_model:
+   Once the fine tuning model step is done, use the run_id  (here we use an example run_id `d01fc81e11e842f5b9556ae04136c0d3`) as the parameter to run the inference_pipeline_model step as follows to produce the inference_pipeline_model:
+      
       mlflow run . -e inference_pipeline_model  --experiment-name='dl_model_chapter08' -P finetuned_model_run_id='d01fc81e11e842f5b9556ae04136c0d3'
       
-      This will produce two mlruns under chapter08 folder. Make sure you modify the meta.yaml to have the correct path needed for the docker image we want to build to use. 
+   This will produce two mlruns under chapter08 folder. Make sure you modify the `meta.yaml` to have the correct path needed for the docker image we want to build to use. You can refer to the `meta.yaml` file in the GitHub Repo. 
+   As a reminder, you can also directly use the mlruns in the GitHub repo to do the deployment. 
 
 
 
