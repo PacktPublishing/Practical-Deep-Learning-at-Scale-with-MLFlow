@@ -17,4 +17,5 @@ dependencies:
       - shap==0.40.0
       - ipywidgets==7.7.0
       - matplotlib==3.5.1
-
+      - transformers-interpret==0.6.0
+      - captum==0.5.0
