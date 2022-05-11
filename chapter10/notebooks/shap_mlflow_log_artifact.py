@@ -19,6 +19,8 @@ import numpy as np
 os.environ["AWS_ACCESS_KEY_ID"] = "minio"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
 os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
+
+# disable Hugging Face warning
 os.environ["TOKENIZERS_PARALLELISM"] = "False"
 
 # %%
@@ -29,6 +31,7 @@ experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
 print("experiment_id:", experiment.experiment_id)
 
 # %%
+# create a DL model that can classify a sentence into POSITIVE or NEGATIVE sentiment
 dl_model = transformers.pipeline('sentiment-analysis', return_all_scores=False)
 explainer = shap.Explainer(dl_model) 
 shap_values = explainer(["Not a good movie to spend time on.", "This is a great movie."])
