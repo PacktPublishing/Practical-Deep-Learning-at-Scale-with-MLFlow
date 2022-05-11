@@ -8,6 +8,6 @@
       export AWS_ACCESS_KEY_ID="minio"
       export AWS_SECRET_ACCESS_KEY="minio123"
 
-## Set up conda virtual environment chapter10-batch-explain by running:
+## Set up conda virtual environment chapter10-dl-explain by running:
        conda env create -f conda.yaml
        conda activate chapter10-dl-explain
