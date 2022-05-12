@@ -7,6 +7,7 @@
       export MLFLOW_S3_ENDPOINT_URL=http://localhost:9000
       export AWS_ACCESS_KEY_ID="minio"
       export AWS_SECRET_ACCESS_KEY="minio123"
+      export MLFLOW_EXPERIMENT_NAME=dl_explain_chapter10
 
 ## Set up conda virtual environment chapter10-dl-explain by running:
        conda env create -f conda.yaml
