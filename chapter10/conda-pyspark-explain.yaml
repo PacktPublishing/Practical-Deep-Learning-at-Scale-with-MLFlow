@@ -1,0 +1,16 @@
+name: chapter10-dl-pyspark-explain
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.10
+  - pyspark=3.2.1
+  - openjdk=8
+  - pip
+  - pip:
+      - ipykernel==6.13.0
+      - lightning-flash[all]==0.7.4
+      - mlflow==1.25.1
+      - boto3==1.22.5
+      - shap==0.40.0
+      - ipywidgets==7.7.0
+      - matplotlib==3.5.1
