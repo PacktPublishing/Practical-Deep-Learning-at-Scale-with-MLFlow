@@ -38,7 +38,7 @@ output = json.dumps([{'name': 'shap_values', 'type': 'string'}])
 signature = ModelSignature.from_dict({'inputs': input, 'outputs': output})
 
 @click.command(help="This program creates an nlp sentiment classifier explainer .")
-@click.option("--pipeline_run_name", default="nlp_sentiment_classifier_explainer_logging", help="This is the mlflow run name.")
+@click.option("--pipeline_run_name", default="nlp_sentiment_classifier_explainer", help="This is the mlflow run name.")
 def task(pipeline_run_name):
     with mlflow.start_run(run_name=pipeline_run_name) as mlrun:
         mlflow.pyfunc.log_model(artifact_path=MODEL_ARTIFACT_PATH, 
