@@ -35,5 +35,5 @@ spark_df = spark.createDataFrame(df_pandas)
 spark_df = spark_df.withColumn('shap_values', explainer())
 
 # %%
-spark_df.show(n = 10, truncate=80, vertical=True)
+spark_df.show(n = 2, truncate=80, vertical=True)
 # %%
