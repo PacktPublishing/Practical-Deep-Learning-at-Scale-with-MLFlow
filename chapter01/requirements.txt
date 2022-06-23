@@ -1,0 +1,7 @@
+ipykernel==6.4.1
+lightning-flash[all]==0.5.0
+mlflow==1.20.2
+transformers==4.9.2
+boto3==1.19.7
+pytorch-lightning==1.4.9
+datasets==1.9.0

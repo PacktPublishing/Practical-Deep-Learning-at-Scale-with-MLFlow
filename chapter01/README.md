@@ -2,7 +2,13 @@
 
 1. Installation of all dependencies
 
-   a) Run `bash install_chapter01.sh` to install all dependencies
+   a) Set up a new virtual environment dl_model and install lightnining-flash[all] latest version. Note that due to the rapid change
+      of lightning-flash API, sometimes backward incompatibility might happen. We will update this README to reflect any new change.
+     
+      conda create -n dl_model python==3.8.10
+      conda activate dl_model
+      pip install -r requirements.txt
+     
 
    b) You need to have conda installed first before you run the above command
 
