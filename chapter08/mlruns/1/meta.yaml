@@ -1,4 +1,0 @@
-artifact_location: file:///opt/mlflow/mlruns/1
-experiment_id: '1'
-lifecycle_stage: active
-name: dl_model_chapter08
