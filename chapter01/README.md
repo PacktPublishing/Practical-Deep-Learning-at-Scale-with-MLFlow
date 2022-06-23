@@ -7,8 +7,11 @@
       So instead of just installing lightning-flash, we use a standard python package requirements.txt file to freeze all related packages and versons.
       Run the following commands to get the dependencies installed on the virtual environment 'dl_model':
      
+     
       conda create -n dl_model python==3.8.10
+      
       conda activate dl_model
+      
       pip install -r requirements.txt
      
 
