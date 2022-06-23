@@ -2,8 +2,10 @@
 
 1. Installation of all dependencies
 
-   a) Set up a new virtual environment dl_model and install lightnining-flash[all] latest version. Note that due to the rapid change
-      of lightning-flash API, sometimes backward incompatibility might happen. We will update this README to reflect any new change.
+   a) Set up a new virtual environment dl_model and install lightnining-flash[all]==0.5.0. Note that due to the rapid change
+      of lightning-flash API, sometimes backward incompatibility happens. We thus use this README to make all necessary updates.
+      So instead of just installing lightning-flash, we use a standard python package requirements.txt file to freeze all related packages and versons.
+      Run the following commands to get the dependencies installed on the virtual environment 'dl_model':
      
       conda create -n dl_model python==3.8.10
       conda activate dl_model
