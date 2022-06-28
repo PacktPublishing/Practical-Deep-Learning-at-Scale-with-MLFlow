@@ -1,0 +1,7 @@
+wrapt==1.14.1
+opt-einsum==3.3.0
+gast==0.5.3
+astunparse==1.6.3
+flatbuffers==2.0
+h5py==3.7.0
+keras-preprocessing==1.1.2
