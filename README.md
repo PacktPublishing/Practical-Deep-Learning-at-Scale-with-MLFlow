@@ -26,4 +26,10 @@ This book covers the following exciting features:
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/Practical-Deep-Learning-Scale-MLflow/dp/1803241330/) today!
 
+## Instructions and Navigations
+
+Most of the code is specific to the package versions specified in each chapter's requirements.txt file. Please ensure compatibility by installing correct packages. Any up-to-date changes can be found in this Github repo. Please follow the readme under each chapter's code folder.
+
+All of the code is organized into folders. For example, chapter02.
+
 
