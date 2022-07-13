@@ -88,7 +88,7 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 * Machine Learning Engineering with Python [[Packt]](https://www.packtpub.com/product/machine-learning-engineering-with-python/9781801079259?utm_source=github&utm_medium=repository&utm_campaign=9781801079259) [[Amazon]](https://www.amazon.com/dp/B09CHHK2RJ)
 
 ## Get to Know the Author
-**Yong Liu 
+**Yong Liu**
 has been working in big data science, machine learning, and optimization since
 his doctoral student years at the University of Illinois at Urbana-Champaign (UIUC)
 and later as a senior research scientist and principal investigator at the National Center
