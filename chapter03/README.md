@@ -4,6 +4,12 @@
    1. conda create -n dl_model python==3.8.10
    2. conda activate dl_model
    3. pip install -r requirements.txt
+   
+   #### Notes: on the new Apple M1 laptop, the above pip install might not work well due to the BLAS library when installing pandas, tokenizers and grpcio libs. If you encounter problems please try the following steps:
+   1. brew install openblas
+   2. conda config --add channels conda-forge
+   3. conda config --set channel_priority strict
+   4. conda install --file requirments.txt
 ## Set up a local full-fledged MLflow tracking and registry server with MySQL as backend storage and MinIO as the artifact store
 #### The mlflow docker setup is based on `https://github.com/sachua/mlflow-docker-compose` with updates on latest versions of images of nginix and minio and python version to 3.8. Also fixed bugs for creating buckets using minIO.
    1. Checkout the entire repo and switch to folder `chapter03/mlflow_docker_setup`
