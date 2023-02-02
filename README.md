@@ -1,3 +1,6 @@
+
+
+
 # Practical Deep Learning at Scale with MLflow
 
 <a href="https://www.packtpub.com/product/practical-deep-learning-at-scale-with-mlflow/9781803241333?utm_source=github&utm_medium=repository&utm_campaign=9781803241333"><img src="https://static.packt-cdn.com/products/9781803241333/cover/smaller" alt="Practical Deep Learning at Scale with MLflow" height="256px" align="right"></a>
@@ -98,3 +101,7 @@ Microsoft and AI/ML start-ups in the industry. He has shipped ML and DL models t
 production and has been a speaker at the Spark/Data+AI summit and NLP summit.
 He has recently published peer-reviewed papers on deep learning, linked data, and
 knowledge-infused learning at various ACM/IEEE conferences and journals.
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781803241333">https://packt.link/free-ebook/9781803241333 </a> </p>
