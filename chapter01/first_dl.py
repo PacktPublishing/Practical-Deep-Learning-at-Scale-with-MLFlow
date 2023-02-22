@@ -4,7 +4,7 @@ import flash
 from flash.core.data.utils import download_data
 from flash.text import TextClassificationData, TextClassifier
 
-print('### download IMDb data to local folder')
+print('### download IMDb data to local folder1')
 download_data("https://pl-flash-data.s3.amazonaws.com/imdb.zip", "./data/")
 datamodule = TextClassificationData.from_csv(
     input_fields="review",
