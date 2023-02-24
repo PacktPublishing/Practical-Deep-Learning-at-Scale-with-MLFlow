@@ -18,7 +18,7 @@ print('### define a text classifier ')
 classifier_model = TextClassifier(backbone="prajjwal1/bert-tiny", num_classes=datamodule.num_classes)
 
 print('### define the trainer')
-trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
+trainer = flash.Trainer(max_epochs=1, gpus=torch.cuda.device_count())
 
 print('### fine tune the pretrained model to get a new model for sentiment classification')
 trainer.finetune(classifier_model, datamodule=datamodule, strategy="freeze")

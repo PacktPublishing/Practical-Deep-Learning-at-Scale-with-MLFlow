@@ -1,0 +1,4 @@
+artifact_location: file:///home/bwin/Practical-Deep-Learning-at-Scale-with-MLFlow/chapter02/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: dl_model_chapter02

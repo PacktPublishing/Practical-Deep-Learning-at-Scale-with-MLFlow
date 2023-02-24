@@ -15,3 +15,10 @@
    2. To run the first deep learning model with mlflow, type `python first_dl_with_mlflow.py` in your command line
    3. Start the mlflow UI web server at the command line `mlflow ui`
    4. Go to a local web browser and open the URL: `https://127.0.0.1:5000/` and you will see the mlflow UI with the logged DL model experiment run.
+
+
+export MLFLOW_TRACKING_URI=databricks
+
+export DATABRICKS_HOST=https://*******
+
+export DATABRICKS_TOKEN=dapi******

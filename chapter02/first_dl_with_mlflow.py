@@ -14,8 +14,9 @@ datamodule = TextClassificationData.from_csv(
 )
 
 classifier_model = TextClassifier(backbone="prajjwal1/bert-tiny", num_classes=datamodule.num_classes)
-trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
+trainer = flash.Trainer(max_epochs=1, gpus=torch.cuda.device_count())
 
+#EXPERIMENT_NAME = "/Users/webi@microsoft.com/dl_model_chapter02"
 EXPERIMENT_NAME = "dl_model_chapter02"
 mlflow.set_experiment(EXPERIMENT_NAME)
 experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)

@@ -1,0 +1,15 @@
+artifact_uri: file:///home/bwin/Practical-Deep-Learning-at-Scale-with-MLFlow/chapter02/mlruns/1/34e6c900bbec484aa32ca9a4827a0c85/artifacts
+end_time: 1677130886378
+entry_point_name: ''
+experiment_id: '1'
+lifecycle_stage: active
+name: ''
+run_id: 34e6c900bbec484aa32ca9a4827a0c85
+run_uuid: 34e6c900bbec484aa32ca9a4827a0c85
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1677130684022
+status: 3
+tags: []
+user_id: bwin

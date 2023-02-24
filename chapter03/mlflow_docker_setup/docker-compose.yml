@@ -75,7 +75,7 @@ services:
         image: mlflow_nginx
         container_name: mlflow_nginx
         ports:
-            - "80:80"
+            - "8080:80"
             - "9000:9000"
         networks:
             - frontend

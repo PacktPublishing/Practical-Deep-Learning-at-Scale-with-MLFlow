@@ -1,0 +1,12 @@
+backbone: prajjwal1/bert-tiny
+enable_ort: false
+learning_rate: 0.01
+loss_fn: null
+metrics: null
+multi_label: false
+num_classes: 2
+optimizer: !!python/name:torch.optim.adam.Adam ''
+optimizer_kwargs: null
+scheduler: null
+scheduler_kwargs: null
+serializer: null
