@@ -16,9 +16,3 @@
    3. Start the mlflow UI web server at the command line `mlflow ui`
    4. Go to a local web browser and open the URL: `https://127.0.0.1:5000/` and you will see the mlflow UI with the logged DL model experiment run.
 
-
-export MLFLOW_TRACKING_URI=databricks
-
-export DATABRICKS_HOST=https://adb-7148578107722284.4.azuredatabricks.net/
-
-export DATABRICKS_TOKEN=dapi9342f9ea2d5998e33a3a7dd0493fdcd3
