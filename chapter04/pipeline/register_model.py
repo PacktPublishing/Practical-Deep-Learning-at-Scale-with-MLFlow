@@ -12,6 +12,7 @@ logger = logging.getLogger()
 @click.option("--registered_model_name", default="dl_finetuned_model", help="This is the registered model name.")
 @click.option("--pipeline_run_name", default="chapter04", help="This is the mlflow run name.")
 def task(mlflow_run_id, registered_model_name, pipeline_run_name):
+    logger.info('debug123456')
     if mlflow_run_id is None or mlflow_run_id == 'None':
         logger.info('no model to register. exit now.')
         return

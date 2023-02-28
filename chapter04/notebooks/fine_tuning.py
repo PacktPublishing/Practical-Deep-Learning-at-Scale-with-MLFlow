@@ -15,7 +15,7 @@ import torchmetrics
 os.environ["AWS_ACCESS_KEY_ID"] = "minio"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
 os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
-os.environ["MLFLOW_TRACKING_URI"] = "http://localhost"
+os.environ["MLFLOW_TRACKING_URI"] = "http://localhost/8080"
 
 # %%
 download_data("https://pl-flash-data.s3.amazonaws.com/imdb.zip", "./data/")
@@ -31,7 +31,7 @@ datamodule = TextClassificationData.from_csv(
 # %%
 classifier_model = TextClassifier(backbone="prajjwal1/bert-tiny",
                                   num_classes=datamodule.num_classes, metrics=torchmetrics.F1(datamodule.num_classes))
-trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
+trainer = flash.Trainer(max_epochs=1, gpus=torch.cuda.device_count())
 
 
 # %%

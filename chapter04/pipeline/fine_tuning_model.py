@@ -28,19 +28,18 @@ def task(foundation_model, fine_tuning_strategy, data_path):
 
     classifier_model = TextClassifier(backbone=foundation_model,
                                       num_classes=datamodule.num_classes, metrics=torchmetrics.F1(datamodule.num_classes))
-    trainer = flash.Trainer(max_epochs=3, gpus=torch.cuda.device_count())
-
-    mlflow.pytorch.autolog()
+    trainer = flash.Trainer(max_epochs=1, gpus=torch.cuda.device_count())
+    logger.info('fine_tuning_debug12345611')
+    #mlflow.pytorch.autolog()
     with mlflow.start_run(run_name="chapter04") as dl_model_tracking_run:
         trainer.finetune(classifier_model, datamodule=datamodule, strategy=fine_tuning_strategy)
         trainer.test()
-
-        # mlflow log additional hyper-parameters used in this training
+        logger.info('fine_tuning_debug123456')
+        #mlflow log additional hyper-parameters used in this training
         mlflow.log_params(classifier_model.hparams)
 
         run_id = dl_model_tracking_run.info.run_id
-        logger.info("run_id: {}; lifecycle_stage: {}".format(run_id,
-                                                             mlflow.get_run(run_id).info.lifecycle_stage))
+        logger.info("run_id: {}; lifecycle_stage123: {}".format(run_id,mlflow.get_run(run_id).info.lifecycle_stage))
         mlflow.log_param("fine_tuning_mlflow_run_id", run_id)
         mlflow.set_tag('pipeline_step', __file__)
 

@@ -19,6 +19,6 @@
 
 export MLFLOW_TRACKING_URI=databricks
 
-export DATABRICKS_HOST=https://*******
+export DATABRICKS_HOST=https://adb-7148578107722284.4.azuredatabricks.net/
 
-export DATABRICKS_TOKEN=dapi******
+export DATABRICKS_TOKEN=dapi9342f9ea2d5998e33a3a7dd0493fdcd3

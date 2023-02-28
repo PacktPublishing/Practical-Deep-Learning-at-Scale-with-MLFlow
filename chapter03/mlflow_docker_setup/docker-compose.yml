@@ -50,7 +50,8 @@ services:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         volumes:
             - dbdata:/var/lib/mysql
-
+        ports:
+            - "33060:3306"
     web:
         restart: always
         build: ./mlflow

@@ -7,3 +7,4 @@ pytorch-lightning==1.4.9
 datasets==1.9.0
 click==8.0.3
 databricks-cli==0.16.2
+protobuf==3.20.*

@@ -1,7 +1,8 @@
 {
     "new_cluster": {
-        "spark_version": "9.1.x-gpu-ml-scala2.12",
-        "num_workers": 1,
-        "node_type_id": "g4dn.xlarge"
+        "num_workers": 2,
+        "spark_version": "10.4.x-scala2.12",
+        "node_type_id": "Standard_D3_v2",
+        "driver_node_type_id": "Standard_D3_v2"
     }
 }
