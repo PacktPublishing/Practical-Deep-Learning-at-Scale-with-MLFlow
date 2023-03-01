@@ -14,7 +14,7 @@ logger = logging.getLogger()
 
 
 @mlflow_mixin
-def finetuning_dl_model(config, data_dir=None, num_epochs=3, num_gpus=0):
+def finetuning_dl_model(config, data_dir=None, num_epochs=2, num_gpus=0):
     datamodule = TextClassificationData.from_csv(
         input_fields="review",
         target_fields="sentiment",
@@ -44,7 +44,7 @@ def finetuning_dl_model(config, data_dir=None, num_epochs=3, num_gpus=0):
 
 
 def run_hpo_dl_model(num_samples=10,
-                     num_epochs=3,
+                     num_epochs=2,
                      gpus_per_trial=0,
                      tracking_uri=None,
                      experiment_name="hpo-tuning-chapter06"):
@@ -92,8 +92,8 @@ def task():
     run_hpo_dl_model(num_samples=10,
                      num_epochs=3,
                      gpus_per_trial=0,
-                     tracking_uri="http://localhost",
-                     experiment_name="hpo-tuning-chapter06")
+                     tracking_uri="databricks",
+                     experiment_name="/Shared/dl_model_chapter06")
 
 
 if __name__ == '__main__':
