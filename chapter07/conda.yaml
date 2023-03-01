@@ -16,3 +16,5 @@ dependencies:
       - databricks-cli==0.16.2
       - gcld3==3.0.13
       - cachetools==5.0.0
+      - protobuf==3.20.*
+      - numpy==1.23.5
