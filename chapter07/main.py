@@ -21,18 +21,18 @@ def run_pipeline(pipeline_steps):
 
     # Setup the mlflow experiment and AWS access for local execution environment
     # # if you run this project remotely, then comment out the following four lines
-    os.environ["MLFLOW_TRACKING_URI"] = "http://localhost"
-    os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
-    os.environ["AWS_ACCESS_KEY_ID"] = "minio"
-    os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
+    # os.environ["MLFLOW_TRACKING_URI"] = "http://localhost"
+    # os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
+    # os.environ["AWS_ACCESS_KEY_ID"] = "minio"
+    # os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
 
     # set up mlflow experiment name
     # Note this can also be setup through the environment variable
     # export MLFLOW_EXPERIMENT_NAME=/Shared/dl_model_chapter07
     # for local execution mode, you can set it up without full path, i.e., dl_model_chapter07
     # for remote execution mode in Databricks, use the full path, i.e., /Shared/dl_model_chapter07
-    EXPERIMENT_NAME = "dl_model_chapter07"
-    # EXPERIMENT_NAME = "/Shared/dl_model_chapter07"
+    # EXPERIMENT_NAME = "dl_model_chapter07"
+    EXPERIMENT_NAME = "/Shared/dl_model_chapter07"
     # mlflow.set_experiment(EXPERIMENT_NAME)
     experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
     logger.info("pipeline experiment_id: %s", experiment.experiment_id)

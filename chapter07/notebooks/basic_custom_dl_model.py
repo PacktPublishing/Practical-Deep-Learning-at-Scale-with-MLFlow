@@ -8,15 +8,17 @@ import pandas as pd
 import json
 
 # %%
-os.environ["AWS_ACCESS_KEY_ID"] = "minio"
-os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
-os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
+# os.environ["AWS_ACCESS_KEY_ID"] = "minio"
+# os.environ["AWS_SECRET_ACCESS_KEY"] = "minio123"
+# os.environ["MLFLOW_S3_ENDPOINT_URL"] = "http://localhost:9000"
 
+os.environ["DATABRICKS_HOST"] = "https://adb-7148578107722284.4.azuredatabricks.net/"
+os.environ["DATABRICKS_TOKEN"] = ""
 
 # %%
 
-EXPERIMENT_NAME = "dl_model_chapter07"
-mlflow.set_tracking_uri('http://localhost')
+EXPERIMENT_NAME = "/Shared/dl_model_chapter07"
+mlflow.set_tracking_uri('databricks')
 mlflow.set_experiment(EXPERIMENT_NAME)
 experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
 print("experiment_id:", experiment.experiment_id)
@@ -58,7 +60,7 @@ print(CONDA_ENV)
 MODEL_ARTIFACT_PATH = 'inference_pipeline_model'
 with mlflow.start_run(run_name="chapter07_wrapped_inference_pipeline") as dl_model_tracking_run:
     # replace the value of finetuned_model_uri with your own finetuned model URI
-    finetuned_model_uri = 'runs:/1290f813d8e74a249c86eeab9f6ed24e/model'
+    finetuned_model_uri = 'runs:/c525ca7e2dd546b5a3661dfcf9a7aa51/model'
     inference_pipeline_uri = f'runs:/{dl_model_tracking_run.info.run_id}/{MODEL_ARTIFACT_PATH}'
     mlflow.pyfunc.log_model(artifact_path=MODEL_ARTIFACT_PATH, 
                             conda_env=CONDA_ENV, 
