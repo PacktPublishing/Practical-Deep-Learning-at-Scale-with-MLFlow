@@ -1,6 +1,5 @@
 # Instructions for Chapter 2
-   0. install mlflow by running 'pip install mlflow' in your dl_model virtual environment from Chapter01.
-      If you just get started, then run the following to set up virtual environment and install:
+   0. Run the following to set up virtual environment and install:
       
       conda create -n dl_model python==3.8.10
       
